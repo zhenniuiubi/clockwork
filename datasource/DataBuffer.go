@@ -12,7 +12,7 @@ type DataBuffer struct {
 	CacheWrites          int16                    `json:"cacheWrites"`
 	CacheReads           int16                    `json:"cacheReads"`
 	CacheHits            int16                    `json:"cacheHits"`
-	TimelineData         map[string]interface{}   `json:"timelineData"`
+	TimelineData         []timelineStructure      `json:"timelineData"`
 	Time                 float64                  `json:"time"`
 	Controller           string                   `json:"controller"`
 	Middleware           []string                 `json:"middleware"`

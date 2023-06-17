@@ -1,16 +1,12 @@
 package datasource
 
-import (
-	"fmt"
-)
-
 type QueryLoggerDataSourceInterface interface {
 	DataSource
 	QueryLoggerInterface
 }
 
 type QueryLoggerInterface interface {
-	LogQuery(model, query string, duration float32, bind []interface{})
+	LogQuery(model, query string, duration float32, bind map[string]interface{})
 }
 
 type mySQLStructure = struct {
@@ -26,16 +22,18 @@ type DatabaseDataSource struct {
 	totalDuration float32
 }
 
-func (source *DatabaseDataSource) LogQuery(model, query string, duration float32, bind []interface{}) {
+func (source *DatabaseDataSource) LogQuery(model, query string, duration float32, bind map[string]interface{}) {
 	var tags []string
 
 	if duration > 50 {
 		tags = append(tags, "slow")
+	} else {
+		tags = []string{}
 	}
 
 	structure := mySQLStructure{
 		Model:      model,
-		Query:      query + " [" + fmt.Sprintf("%v", bind) + "]",
+		Query:      query,
 		Duration:   duration,
 		Connection: "test-connection",
 		Tags:       tags,

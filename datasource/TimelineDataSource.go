@@ -23,7 +23,7 @@ type timelineStructure = struct {
 }
 
 type TimelineDataSource struct {
-	commands    map[string]interface{}
+	commands    []timelineStructure
 	startTime   map[string]time.Time
 	description map[string]string
 	mutex       *sync.Mutex
@@ -38,7 +38,7 @@ func (source *TimelineDataSource) StartEvent(event string, description string) {
 	}
 
 	if len(source.commands) == 0 {
-		source.commands = make(map[string]interface{})
+		source.commands = []timelineStructure{}
 	}
 
 	if len(source.description) == 0 {
@@ -56,12 +56,12 @@ func (source *TimelineDataSource) EndEvent(event string) {
 	start := MicroTime(source.startTime[event])
 	end := MicroTime(time.Now())
 
-	source.commands[event] = timelineStructure{
+	source.commands = append(source.commands, timelineStructure{
 		Start:       start,
 		End:         end,
 		Duration:    (end * 1000) - (start * 1000),
 		Description: source.description[event],
-	}
+	})
 }
 
 func (source *TimelineDataSource) Resolve(dataBuffer *DataBuffer) {
