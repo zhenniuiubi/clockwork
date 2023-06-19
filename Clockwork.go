@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	dataSource "github.com/coretrix/clockwork/datasource"
+	dataSource "github.com/zhenniuiubi/clockwork/datasource"
 )
 
 const key = "profiler_store"

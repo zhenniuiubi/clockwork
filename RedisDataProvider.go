@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-redis/redis/v7"
 
-	dataSource "github.com/coretrix/clockwork/datasource"
+	dataSource "github.com/zhenniuiubi/clockwork/datasource"
 )
 
 type RedisDataProvider struct {

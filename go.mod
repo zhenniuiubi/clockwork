@@ -1,4 +1,4 @@
-module github.com/coretrix/clockwork
+module github.com/zhenniuiubi/clockwork
 
 go 1.19
 

@@ -1,6 +1,6 @@
-[![checks & tests](https://github.com/coretrix/clockwork/actions/workflows/main.yml/badge.svg)](https://github.com/coretrix/clockwork/actions)
-[![codecov](https://codecov.io/gh/coretrix/clockwork/branch/master/graph/badge.svg?token=1KZSMFMKWA)](https://codecov.io/gh/coretrix/clockwork)
-[![Go Report Card](https://goreportcard.com/badge/github.com/coretrix/clockwork)](https://goreportcard.com/report/github.com/coretrix/clockwork)
+[![checks & tests](https://github.com/zhenniuiubi/clockwork/actions/workflows/main.yml/badge.svg)](https://github.com/zhenniuiubi/clockwork/actions)
+[![codecov](https://codecov.io/gh/zhenniuiubi/clockwork/branch/master/graph/badge.svg?token=1KZSMFMKWA)](https://codecov.io/gh/zhenniuiubi/clockwork)
+[![Go Report Card](https://goreportcard.com/badge/github.com/zhenniuiubi/clockwork)](https://goreportcard.com/report/github.com/zhenniuiubi/clockwork)
 [![GPL3 license](https://img.shields.io/badge/license-GPL3-brightgreen.svg)](https://opensource.org/licenses/GPL-3.0)
 
 # Server-side component for Clockwork browser extension written in GO
@@ -11,7 +11,7 @@
 package main
 import (
 
-"github.com/coretrix/clockwork"
+"github.com/zhenniuiubi/clockwork"
 "github.com/go-redis/redis"
 )
 

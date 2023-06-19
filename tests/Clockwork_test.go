@@ -6,8 +6,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/coretrix/clockwork"
-	dataSource "github.com/coretrix/clockwork/datasource"
+	"github.com/zhenniuiubi/clockwork"
+	dataSource "github.com/zhenniuiubi/clockwork/datasource"
 )
 
 func TestClockwork_GetData(t *testing.T) {
@@ -28,16 +28,14 @@ func TestClockwork_GetData(t *testing.T) {
 
 	requestResponseDataSource.SetStartTime(time.Now())
 
-	var bind1 []interface{}
-	var bind2 []interface{}
-	var bind3 []interface{}
+	var bind1 map[string]interface{}
+	var bind2 map[string]interface{}
+	var bind3 map[string]interface{}
 
 	middleware := []string{"Authorize", "Normalization", "Guard", "Handler"}
 
-	bind2 = append(bind2, 1, 2, "test param")
-
 	mysqlDataSource.LogQuery("mysql", "SELECT * FROM users", 12.224, bind1)
-	mysqlDataSource.LogQuery("mysql", "SELECT * FROM address where id = ?", 1, bind2)
+	mysqlDataSource.LogQuery("mysql", "SELECT * FROM address where id = 1", 1, bind2)
 	mysqlDataSource.LogQuery("mysql", "SELECT * FROM big_table", 55, bind3)
 
 	redisDataSource.LogCommand("hSet", "test_key_1", 0.12)
