@@ -1,5 +1,7 @@
 package datasource
 
+import "time"
+
 type QueryLoggerDataSourceInterface interface {
 	DataSource
 	QueryLoggerInterface
@@ -16,6 +18,7 @@ type mySQLStructure = struct {
 	Connection string                   `json:"connection"`
 	Tags       []string                 `json:"tags"`
 	Trace      []map[string]interface{} `json:"trace"`
+	Time       float64                  `json:"time"`
 }
 
 type DatabaseDataSource struct {
@@ -39,6 +42,7 @@ func (source *DatabaseDataSource) LogQuery(model, query string, duration float32
 		Connection: "test-connection",
 		Tags:       tags,
 		Trace:      trace,
+		Time:       MicroTime(time.Now()),
 	}
 
 	source.totalDuration += duration
