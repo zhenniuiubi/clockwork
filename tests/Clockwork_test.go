@@ -28,9 +28,9 @@ func TestClockwork_GetData(t *testing.T) {
 
 	requestResponseDataSource.SetStartTime(time.Now())
 
-	var bind1 map[string]interface{}
-	var bind2 map[string]interface{}
-	var bind3 map[string]interface{}
+	var bind1 []map[string]interface{}
+	var bind2 []map[string]interface{}
+	var bind3 []map[string]interface{}
 
 	middleware := []string{"Authorize", "Normalization", "Guard", "Handler"}
 

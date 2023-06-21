@@ -6,15 +6,16 @@ type QueryLoggerDataSourceInterface interface {
 }
 
 type QueryLoggerInterface interface {
-	LogQuery(model, query string, duration float32, bind map[string]interface{})
+	LogQuery(model, query string, duration float32, trace []map[string]interface{})
 }
 
 type mySQLStructure = struct {
-	Model      string   `json:"model"`
-	Query      string   `json:"query"`
-	Duration   float32  `json:"duration"`
-	Connection string   `json:"connection"`
-	Tags       []string `json:"tags"`
+	Model      string                   `json:"model"`
+	Query      string                   `json:"query"`
+	Duration   float32                  `json:"duration"`
+	Connection string                   `json:"connection"`
+	Tags       []string                 `json:"tags"`
+	Trace      []map[string]interface{} `json:"trace"`
 }
 
 type DatabaseDataSource struct {
@@ -22,7 +23,7 @@ type DatabaseDataSource struct {
 	totalDuration float32
 }
 
-func (source *DatabaseDataSource) LogQuery(model, query string, duration float32, bind map[string]interface{}) {
+func (source *DatabaseDataSource) LogQuery(model, query string, duration float32, trace []map[string]interface{}) {
 	var tags []string
 
 	if duration > 50 {
@@ -37,6 +38,7 @@ func (source *DatabaseDataSource) LogQuery(model, query string, duration float32
 		Duration:   duration,
 		Connection: "test-connection",
 		Tags:       tags,
+		Trace:      trace,
 	}
 
 	source.totalDuration += duration
